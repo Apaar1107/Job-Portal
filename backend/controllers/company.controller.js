@@ -75,13 +75,9 @@ export const updateCompany = async (req, res) => {
  
         const file = req.file;
         // idhar cloudinary ayega
-        let logo;
-        if(file){
-            const fileUri = getDataUri(file);
-            const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-            logo= cloudResponse.secure_url;
-        }
-       
+        const fileUri = getDataUri(file);
+        const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+        const logo = cloudResponse.secure_url;
     
         const updateData = { name, description, website, location, logo };
 

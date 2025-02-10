@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RadioGroup, RadioGroupItem } from './ui/radio-group'
 import { Label } from './ui/label'
 import { useDispatch } from 'react-redux'
@@ -35,13 +35,13 @@ const FilterCard = () => {
             <RadioGroup value={selectedValue} onValueChange={changeHandler}>
                 {
                     fitlerData.map((data, index) => (
-                        <div key={index}>
+                        <div>
                             <h1 className='font-bold text-lg'>{data.fitlerType}</h1>
                             {
                                 data.array.map((item, idx) => {
                                     const itemId = `id${index}-${idx}`
                                     return (
-                                        <div className='flex items-center space-x-2 my-2' key={idx} >
+                                        <div className='flex items-center space-x-2 my-2'>
                                             <RadioGroupItem value={item} id={itemId} />
                                             <Label htmlFor={itemId}>{item}</Label>
                                         </div>

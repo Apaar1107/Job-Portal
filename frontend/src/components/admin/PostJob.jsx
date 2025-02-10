@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import React, { useState } from 'react'
 import Navbar from '../shared/Navbar'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
@@ -11,7 +11,7 @@ import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
 
-
+const companyArray = [];
 
 const PostJob = () => {
     const [input, setInput] = useState({
@@ -41,7 +41,6 @@ const PostJob = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            console.log(input)
             setLoading(true);
             const res = await axios.post(`${JOB_API_END_POINT}/post`, input,{
                 headers:{
@@ -155,9 +154,9 @@ const PostJob = () => {
                                     <SelectContent>
                                         <SelectGroup>
                                             {
-                                                companies.map((company,idx) => {
+                                                companies.map((company) => {
                                                     return (
-                                                        <SelectItem key={idx} value={company?.name?.toLowerCase()}>{company.name}</SelectItem>
+                                                        <SelectItem value={company?.name?.toLowerCase()}>{company.name}</SelectItem>
                                                     )
                                                 })
                                             }

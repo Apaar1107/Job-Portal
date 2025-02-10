@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../shared/Navbar'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
@@ -56,7 +56,7 @@ const Signup = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error(error?.response?.data?.message);
+            toast.error(error.response.data.message);
         } finally{
             dispatch(setLoading(false));
         }
